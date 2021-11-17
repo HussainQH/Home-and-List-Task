@@ -6,7 +6,7 @@ import ShopItem from "./ShopItem";
 
 const ShopList = ({ navigation }) => {
   const shopList = shopStore.shops.map((shop) => (
-    <ShopItem shop={shop} key={shop._id} />
+    <ShopItem shop={shop} key={shop._id} navigation={navigation} />
   ));
 
   return <View>{shopList}</View>;

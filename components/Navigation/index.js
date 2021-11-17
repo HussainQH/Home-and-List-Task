@@ -7,10 +7,23 @@ import ShopDetail from "../ShopDetail";
 const RootNavigator = () => {
   const { Navigator, Screen } = createStackNavigator();
   return (
-    <Navigator initialRouteName="ShopDetail">
+    <Navigator initialRouteName="Home">
       <Screen name="Home" component={Home} />
-      <Screen name="ShopList" component={ShopList} />
-      <Screen name="ShopDetail" component={ShopDetail} />
+      <Screen
+        name="ShopList"
+        component={ShopList}
+        options={{ title: "Shops" }}
+      />
+      <Screen
+        name="ShopDetail"
+        component={ShopDetail}
+        options={({ route }) => {
+          const { shop } = route.params;
+          return {
+            title: shop.name,
+          };
+        }}
+      />
     </Navigator>
   );
 };
