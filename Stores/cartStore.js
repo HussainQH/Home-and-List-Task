@@ -24,6 +24,20 @@ class CartStore {
     },
   ];
 
+  addItemToCart = (newItem) => {
+    const foundItem = this.items.find(
+      (item) => item.product._id === newItem.product._id
+    );
+    if (!foundItem) this.items.push(newItem);
+    else foundItem.quantity = newItem.quantity;
+  };
+
+  get totalQuantity() {
+    let total = 0;
+    this.items.forEach((item) => (total += item.quantity));
+    return total;
+  }
+
   constructor() {
     makeAutoObservable(this);
   }
