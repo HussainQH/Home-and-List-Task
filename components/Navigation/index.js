@@ -5,11 +5,23 @@ import ShopList from "../ShopList";
 import ShopDetail from "../ShopDetail";
 import CartList from "../CartList";
 import CartButton from "../Buttons/cartButton";
+import Signin from "../Signin";
+import Signup from "../Signup";
 
 const RootNavigator = () => {
   const { Navigator, Screen } = createStackNavigator();
   return (
-    <Navigator initialRouteName="Home">
+    <Navigator initialRouteName="Signup">
+      <Screen
+        name="Signup"
+        component={Signup}
+        options={{ headerShown: false }}
+      />
+      <Screen
+        name="Signin"
+        component={Signin}
+        options={{ headerShown: false }}
+      />
       <Screen name="Cart" component={CartList} />
 
       <Screen
