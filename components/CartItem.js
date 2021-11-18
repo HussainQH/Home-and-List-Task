@@ -42,6 +42,12 @@ const CartItem = ({ item }) => {
         <Button marginLeft="10" onPress={handleAdd}>
           <Text>Add</Text>
         </Button>
+        <Button
+          marginLeft="10"
+          onPress={() => cartStore.removeItemFromCart(product._id)}
+        >
+          <Text>Remove Items</Text>
+        </Button>
       </HStack>
     </VStack>
   );

@@ -1,6 +1,6 @@
 import React from "react";
 import { observer } from "mobx-react";
-import { View } from "react-native";
+import { ScrollView } from "react-native";
 import shopStore from "../Stores/shopStore";
 import ShopItem from "./ShopItem";
 
@@ -9,7 +9,7 @@ const ShopList = ({ navigation }) => {
     <ShopItem shop={shop} key={shop._id} navigation={navigation} />
   ));
 
-  return <View>{shopList}</View>;
+  return <ScrollView>{shopList}</ScrollView>;
 };
 
 export default observer(ShopList);
