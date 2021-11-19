@@ -1,4 +1,6 @@
 import React from "react";
+import authStore from "../Stores/authStore";
+import { useState } from "react";
 import {
   Box,
   Text,
@@ -6,13 +8,23 @@ import {
   VStack,
   FormControl,
   Input,
-  Link,
   Button,
   HStack,
   Center,
+  Link,
 } from "native-base";
 
-const Signin = () => {
+const Signin = ({ navigation }) => {
+  const [user, setUser] = useState({
+    username: "",
+    password: "",
+  });
+
+  const handleSubmit = async () => {
+    await authStore.signin(user, navigation);
+    navigation.navigate("Cart");
+  };
+
   return (
     <Center>
       <Box safeArea p="2" py="8" w="90%" maxW="290">
@@ -41,13 +53,18 @@ const Signin = () => {
         <VStack space={3} mt="5">
           <FormControl>
             <FormControl.Label>Username</FormControl.Label>
-            <Input />
+            <Input
+              onChangeText={(username) => setUser({ ...user, username })}
+            />
           </FormControl>
           <FormControl>
             <FormControl.Label>Password</FormControl.Label>
-            <Input type="password" />
+            <Input
+              type="password"
+              onChangeText={(password) => setUser({ ...user, password })}
+            />
           </FormControl>
-          <Button mt="2" colorScheme="indigo">
+          <Button mt="2" colorScheme="indigo" onPress={handleSubmit}>
             Sign in
           </Button>
           <HStack mt="6" justifyContent="center">
@@ -60,7 +77,7 @@ const Signin = () => {
             >
               I'm a new user.{" "}
             </Text>
-            <Text>Sign Up</Text>
+            <Link onPress={() => navigation.navigate("Signup")}>Sign Up</Link>
           </HStack>
         </VStack>
       </Box>

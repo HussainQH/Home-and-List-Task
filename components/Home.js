@@ -3,6 +3,7 @@ import { styles } from "../styles";
 import { Text, View } from "react-native";
 
 import { Button } from "native-base";
+import authStore from "../Stores/authStore";
 
 function Home({ navigation }) {
   return (
@@ -11,6 +12,7 @@ function Home({ navigation }) {
       <Button onPress={() => navigation.navigate("ShopList")}>
         Shops List
       </Button>
+      <Button onPress={authStore.logout}>Logout</Button>
     </View>
   );
 }

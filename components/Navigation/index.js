@@ -11,17 +11,9 @@ import Signup from "../Signup";
 const RootNavigator = () => {
   const { Navigator, Screen } = createStackNavigator();
   return (
-    <Navigator initialRouteName="Signup">
-      <Screen
-        name="Signup"
-        component={Signup}
-        options={{ headerShown: false }}
-      />
-      <Screen
-        name="Signin"
-        component={Signin}
-        options={{ headerShown: false }}
-      />
+    <Navigator initialRouteName="Home">
+      <Screen name="Signup" component={Signup} />
+      <Screen name="Signin" component={Signin} />
       <Screen name="Cart" component={CartList} />
 
       <Screen
